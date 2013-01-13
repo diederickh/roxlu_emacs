@@ -9,6 +9,13 @@
 (setq indent-tabs-mode nil)
 (setq-default truncate-lines t) ; no line wrapping
 
+; make sure that function arguments are nicely indented
+(add-hook 'c-mode-hook
+          (lambda ()
+            (c-set-offset 'arglist-intro '+)
+            (c-set-offset 'arglist-cont-nonempty '+)
+            (c-set-offset 'arglist-close 0)))
+
 ; indent cases labels
 (setq c-offsets-alist '((case-label . 2)))
 
@@ -54,9 +61,8 @@
 (ac-config-default)
 
 ; nxhtml 
-; (load "~/.emacs.d/nxhtml/autostart.el")
-; (setq mumamo-background-colors nil) ;no wierd chunked coloring
-
+;(load "~/.emacs.d/nxhtml/autostart.el")
+;(setq mumamo-background-colors nil) ;no wierd chunked coloring
 
 ; cmake mode
 (setq auto-mode-alist
