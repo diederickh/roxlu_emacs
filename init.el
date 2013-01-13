@@ -40,6 +40,10 @@
 (setq ido-max-work-directory-list 100)
 (setq ido-max-work-file-list 300)
 
+; idomenu, jump through functions
+(autoload 'idomenu "idomenu" nil t)
+(global-set-key (kbd "C-x =") 'idomenu)
+
 ; org
 (require 'org-install)
 
@@ -50,8 +54,8 @@
 (ac-config-default)
 
 ; nxhtml 
-(load "~/.emacs.d/nxhtml/autostart.el")
-(setq mumamo-background-colors nil) ;no wierd chunked coloring
+; (load "~/.emacs.d/nxhtml/autostart.el")
+; (setq mumamo-background-colors nil) ;no wierd chunked coloring
 
 
 ; cmake mode
