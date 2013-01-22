@@ -64,7 +64,6 @@
 ;(load "~/.emacs.d/nxhtml/autostart.el")
 ;(setq mumamo-background-colors nil) ;no wierd chunked coloring
 
-
 (require 'php-mode)
 
 ; cmake mode
@@ -76,3 +75,6 @@
 
 (autoload 'cmake-mode "~/.emacs.d/cmake-mode.el" t)
  
+; Switching between windows 
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
