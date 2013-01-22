@@ -64,6 +64,9 @@
 ;(load "~/.emacs.d/nxhtml/autostart.el")
 ;(setq mumamo-background-colors nil) ;no wierd chunked coloring
 
+
+(require 'php-mode)
+
 ; cmake mode
 (setq auto-mode-alist
       (append
