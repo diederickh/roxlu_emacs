@@ -5,13 +5,23 @@
 
 ; coding / text editing
 (setq tab-width 2)
+
+;(setq basic-offset 2)
 (setq-default indent-tabs-mode nil)
+;(setq-default c-basic-offset 2
+;              tab-width 2
+;              indent-tabs-mode 0)
+
+
 (setq indent-tabs-mode nil)
 (setq-default truncate-lines t) ; no line wrapping
 
 ; make sure that function arguments are nicely indented
+; press C-c C-o, to see what syntax you can change
 (add-hook 'c-mode-hook
           (lambda ()
+            (c-set-offset 'defun-block-intro 2)
+            (c-set-offset 'statement-block-intro 2)
             (c-set-offset 'arglist-intro '+)
             (c-set-offset 'arglist-cont-nonempty '+)
             (c-set-offset 'arglist-close 0)))
