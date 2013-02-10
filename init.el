@@ -18,13 +18,16 @@
 
 ; make sure that function arguments are nicely indented
 ; press C-c C-o, to see what syntax you can change
+; (c-set-offset 'arglist-cont-nonempty '+)
 (add-hook 'c-mode-hook
           (lambda ()
             (c-set-offset 'defun-block-intro 2)
             (c-set-offset 'statement-block-intro 2)
             (c-set-offset 'arglist-intro '+)
-            (c-set-offset 'arglist-cont-nonempty '+)
+            (c-set-offset 'arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
             (c-set-offset 'arglist-close 0)))
+
+; (setq-default arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
 
 ; indent cases labels
 (setq c-offsets-alist '((case-label . 2)))
