@@ -12,7 +12,7 @@
 ;              tab-width 2
 ;              indent-tabs-mode 0)
 
-
+(setq js-indent-level 2)
 (setq indent-tabs-mode nil)
 (setq-default truncate-lines t) ; no line wrapping
 
@@ -91,3 +91,8 @@
 ; Switching between windows 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+
+
+(autoload 'glsl-mode "glsl-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
