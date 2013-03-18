@@ -1,4 +1,3 @@
-(setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
 (setq-default truncate-lines t) ; no line wrapping
@@ -43,3 +42,17 @@
 
 (autoload 'cmake-mode "~/.emacs.d/cmake-mode.el" t)
  
+(setq-default tab-width 2)
+(setq default-tab-width 2)
+(setq tab-width 2)
+
+(defun conf-mode-roxlu-hook()
+  (setq tab-stop-list '(2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38))
+  (setq indent-tabs-mode 'nil)  ;; convert tabs to spaces
+  (setq default-tab-width 2)
+  (setq-default tab-width 2)
+  (define-key conf-mode-map "\t" 'tab-to-tab-stop)
+  (define-key conf-mode-map [backspace] 'delete-backward-char)
+)
+(add-hook 'conf-mode-hook 'conf-mode-roxlu-hook)
+
