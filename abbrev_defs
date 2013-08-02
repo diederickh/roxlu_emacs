@@ -85,6 +85,8 @@
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
+(define-abbrev-table 'package-menu-mode-abbrev-table '())
+
 (define-abbrev-table 'php-mode-abbrev-table '())
 
 (define-abbrev-table 'pike-mode-abbrev-table
@@ -115,7 +117,6 @@
     ("capitalize" "" smarty-template-capitalize-hook 0)
     ("capture" "" smarty-template-capture-hook 0)
     ("cat" "" smarty-template-cat-hook 0)
-    ("clipcache" "" smarty-template-clipcache-hook 0)
     ("config_load" "" smarty-template-config-load-hook 0)
     ("count_characters" "" smarty-template-count-characters-hook 0)
     ("count_paragraphs" "" smarty-template-count-paragraphs-hook 0)
@@ -153,9 +154,8 @@
     ("html_select_date" "" smarty-template-html-select-date-hook 0)
     ("html_select_time" "" smarty-template-html-select-time-hook 0)
     ("html_table" "" smarty-template-html-table-hook 0)
-    ("if" "" smarty-template-if-hook 2)
+    ("if" "" smarty-template-if-hook 0)
     ("include" "" smarty-template-include-hook 0)
-    ("include_clipcache" "" smarty-template-include-clipcache-hook 0)
     ("include_php" "" smarty-template-include-php-hook 0)
     ("indent" "" smarty-template-indent-hook 0)
     ("insert" "" smarty-template-insert-hook 0)
@@ -175,12 +175,10 @@
     ("popup_init" "" smarty-template-popup-init-hook 0)
     ("rdelim" "" smarty-template-rdelim-hook 0)
     ("regex_replace" "" smarty-template-regex-replace-hook 0)
-    ("repeat" "" smarty-template-repeat-hook 0)
     ("replace" "" smarty-template-replace-hook 0)
     ("section" "" smarty-template-section-hook 0)
     ("sectionelse" "" smarty-template-sectionelse-hook 0)
     ("spacify" "" smarty-template-spacify-hook 0)
-    ("str_repeat" "" smarty-template-str-repeat-hook 0)
     ("string_format" "" smarty-template-string-format-hook 0)
     ("strip" "" smarty-template-vstrip-hook 0)
     ("strip_tags" "" smarty-template-strip-tags-hook 0)
@@ -194,6 +192,8 @@
 (define-abbrev-table 'special-mode-abbrev-table '())
 
 (define-abbrev-table 'speedbar-mode-abbrev-table '())
+
+(define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
 

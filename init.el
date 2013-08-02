@@ -4,7 +4,7 @@
 ; cmake-mode: http://www.cmake.org/CMakeDocs/cmake-mode.el
 
 ; coding / text editing
-(setq tab-width 2)
+(setq-default tab-width 2)
 
 ;(setq basic-offset 2)
 (setq-default indent-tabs-mode nil)
@@ -29,6 +29,7 @@
 
 ; (setq-default arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
 
+
 ; indent cases labels
 (setq c-offsets-alist '((case-label . 2)))
 
@@ -41,8 +42,8 @@
    backup-directory-alist
     '(("." . "~/.saves"))    ; don't litter my fs tree
    delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
+   kept-new-versions 16
+   kept-old-versions 12
    version-control t)       ; use versioned backups
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -73,6 +74,10 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+
+; objective c mode
+(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
+
 ; nxhtml 
 ;(load "~/.emacs.d/nxhtml/autostart.el")
 ;(setq mumamo-background-colors nil) ;no wierd chunked coloring
@@ -96,3 +101,15 @@
 (autoload 'glsl-mode "glsl-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values (quote ((intent-tabs-mode)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
