@@ -15,6 +15,8 @@
 (setq js-indent-level 2)
 (setq indent-tabs-mode nil)
 (setq-default truncate-lines t) ; no line wrapping
+(setq sgml-basic-offset 2) ; html 2 tabs
+; (setq sgml-indent-level 2) 
 
 ; make sure that function arguments are nicely indented
 ; press C-c C-o, to see what syntax you can change
