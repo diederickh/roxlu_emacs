@@ -1,59 +1,18 @@
-; auto-complete: version 1.3.1
-; nxhtml: from github revision: 8e31184fb5d621a162e8bc57953d93091f650b1a
-; zenburn color theme: cd .emacs.d && mkdir themes && cd themes && git clone https://github.com/bbatsov/zenburn-emacs.git  .
-; cmake-mode: http://www.cmake.org/CMakeDocs/cmake-mode.el
-
-; coding / text editing
-(setq-default tab-width 2)
-
-;(setq basic-offset 2)
-(setq-default indent-tabs-mode nil)
-;(setq-default c-basic-offset 2
-;              tab-width 2
-;              indent-tabs-mode 0)
-
-(setq js-indent-level 2)
-(setq indent-tabs-mode nil)
-(setq-default truncate-lines t) ; no line wrapping
-(setq sgml-basic-offset 2) ; html 2 tabs
-; (setq sgml-indent-level 2) 
-
-; make sure that function arguments are nicely indented
-; press C-c C-o, to see what syntax you can change
-; (c-set-offset 'arglist-cont-nonempty '+)
-(add-hook 'c-mode-hook
-          (lambda ()
-            (c-set-offset 'defun-block-intro 2)
-            (c-set-offset 'statement-block-intro 2)
-            (c-set-offset 'arglist-intro '+)
-            (c-set-offset 'arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
-            (c-set-offset 'arglist-close 0)))
-
-; (setq-default arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
-
-
-; indent cases labels
-(setq c-offsets-alist '((case-label . 2)))
-
-; color / themes
 (load-theme 'wombat t)
-
-; backups
-(setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-    '(("." . "~/.saves"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 16
-   kept-old-versions 12
-   version-control t)       ; use versioned backups
-
+(setq-default indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-; show matching parenthesis
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+
+; no wordwrapping
+(setq-default truncate-lines 1)
+
+; show matching parens
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+; enable ido
 ; interactively do things
 (require 'ido)
 (setq ido-enable-flex-matching t)
@@ -63,66 +22,31 @@
 (setq ido-max-work-directory-list 100)
 (setq ido-max-work-file-list 300)
 
-; idomenu, jump through functions
-(autoload 'idomenu "idomenu" nil t)
-(global-set-key (kbd "C-x =") 'idomenu)
+; backups
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 16
+   kept-old-versions 12
+   version-control t)       ; use versions
 
 ; org
 (require 'org-install)
 
-; auto complete
-(add-to-list 'load-path "~/.emacs.d/")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
+; make sure that function arguments are nicely indented
+; press C-c C-o, to see what syntax you can change
+; (c-set-offset 'arglist-cont-nonempty '+)
+(add-hook 'c-mode-hook
+          (lambda ()
+            (c-set-offset 'defun-block-intro 2)
+            (c-set-offset 'statement-block-intro 2)
+            (c-set-offset 'arglist-intro '+)
+            (c-set-offset 'substatement-open '0)  ; brackets should be at same indentation level as the statements they open
+            (c-set-offset 'arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
+            (c-toggle-hungry-state 1)
+            (c-set-offset 'arglist-close 0)))
 
-
-; objective c mode
-(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
-
-; nxhtml 
-;(load "~/.emacs.d/nxhtml/autostart.el")
-;(setq mumamo-background-colors nil) ;no wierd chunked coloring
-
-(require 'php-mode)
-
-; cmake mode
-(setq auto-mode-alist
-      (append
-       '(("CMakeLists\\.txt\\'" . cmake-mode))
-       '(("\\.cmake\\'" . cmake-mode))
-       auto-mode-alist))
-
-(autoload 'cmake-mode "~/.emacs.d/cmake-mode.el" t)
- 
-; Switching between windows 
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-
-
-(autoload 'glsl-mode "glsl-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((intent-tabs-mode))))
- '(send-mail-function nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(put 'set-goal-column 'disabled nil)
-
-
-;; quickly jump to a column
-(global-set-key (kbd "C-x j") (lambda () (interactive)
-                                   (move-to-column 115 t)))
-
-;; move characters to column
-(global-set-key (kbd "C-x m")(lambda()  (interactive) (while (<
-               (current-column) 115) (insert " "))))
+; indent case in switches
+(setq c-offsets-alist '((case-label . 2)))
