@@ -1,9 +1,13 @@
+(add-to-list 'load-path "~/.emacs.d/")
+
+
 (load-theme 'wombat t)
 (setq-default indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
+(setq js-indent-level 2) ; also with JS we only want 2 indents
 
 ; no wordwrapping
 (setq-default truncate-lines 1)
@@ -45,8 +49,30 @@
             (c-set-offset 'arglist-intro '+)
             (c-set-offset 'substatement-open '0)  ; brackets should be at same indentation level as the statements they open
             (c-set-offset 'arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
-            (c-toggle-hungry-state 1)
+            (c-toggle-hungry-state 1) ; delete to the next correct character when you delete a white-char
             (c-set-offset 'arglist-close 0)))
 
 ; indent case in switches
 (setq c-offsets-alist '((case-label . 2)))
+
+
+; cmake mode
+(setq auto-mode-alist
+      (append
+       '(("CMakeLists\\.txt\\'" . cmake-mode))
+       '(("\\.cmake\\'" . cmake-mode))
+       auto-mode-alist))
+
+(autoload 'cmake-mode "~/.emacs.d/cmake-mode.el" t)
+
+
+; web mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
