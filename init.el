@@ -107,7 +107,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values (quote ((intent-tabs-mode))))
- '(send-mail-function nil))
+ '(send-mail-function nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -124,3 +126,18 @@
 ;; move characters to column
 (global-set-key (kbd "C-x m")(lambda()  (interactive) (while (<
                (current-column) 115) (insert " "))))
+
+
+;; vertical ido
+;;(require 'ido-vertical-mode)
+;;(ido-mode 1)
+;;(ido-vertical-mode 1)
+;;(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+;; Melpa packages
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+
+;; Magit git (install with "M-x package-install [RET] magit [RET]
+(global-set-key (kbd "C-x g") 'magit-status)
