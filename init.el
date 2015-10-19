@@ -69,10 +69,10 @@
 (require 'org-install)
 
 ; auto complete
-(add-to-list 'load-path "~/.emacs.d/")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
+;(add-to-list 'load-path "~/.emacs.d/auto-complete/")
+;(require 'auto-complete-config)
+;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;(ac-config-default)
 
 
 ; objective c mode
@@ -82,7 +82,7 @@
 ;(load "~/.emacs.d/nxhtml/autostart.el")
 ;(setq mumamo-background-colors nil) ;no wierd chunked coloring
 
-(require 'php-mode)
+; (require 'php-mode)
 
 ; cmake mode
 (setq auto-mode-alist
