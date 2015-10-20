@@ -68,21 +68,11 @@
 ; org
 (require 'org-install)
 
-; auto complete
-(add-to-list 'load-path "~/.emacs.d/")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-
-
 ; objective c mode
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 
-; nxhtml 
-;(load "~/.emacs.d/nxhtml/autostart.el")
-;(setq mumamo-background-colors nil) ;no wierd chunked coloring
-
-(require 'php-mode)
+(autoload 'php-mode "~/.emacs.d/php-mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
 ; cmake mode
 (setq auto-mode-alist
@@ -97,11 +87,11 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-
 (autoload 'glsl-mode "glsl-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 (custom-set-variables
+
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -118,26 +108,21 @@
  )
 (put 'set-goal-column 'disabled nil)
 
-
 ;; quickly jump to a column
-(global-set-key (kbd "C-x j") (lambda () (interactive)
-                                   (move-to-column 115 t)))
+(global-set-key (kbd "C-x j") (lambda () (interactive) (move-to-column 115 t)))
 
 ;; move characters to column
-(global-set-key (kbd "C-x m")(lambda()  (interactive) (while (<
-               (current-column) 115) (insert " "))))
-
-
-;; vertical ido
-;;(require 'ido-vertical-mode)
-;;(ido-mode 1)
-;;(ido-vertical-mode 1)
-;;(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+(global-set-key (kbd "C-x m")(lambda()  (interactive) (while (< (current-column) 115) (insert " "))))
 
 ;; Melpa packages
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 ;; Magit git (install with "M-x package-install [RET] magit [RET]
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Markdown mode
+(autoload 'markdown-mode "~/.emacs.d/markdown-mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
