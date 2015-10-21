@@ -71,17 +71,26 @@
 ; objective c mode
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 
+; php
 (autoload 'php-mode "~/.emacs.d/php-mode.el" t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
-; cmake mode
-(setq auto-mode-alist
-      (append
-       '(("CMakeLists\\.txt\\'" . cmake-mode))
-       '(("\\.cmake\\'" . cmake-mode))
-       auto-mode-alist))
+; web
+(autoload 'web-mode "~/.emacs.d/web-mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
+; css
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.less\\'" . css-mode))
+
+; cmake mode
 (autoload 'cmake-mode "~/.emacs.d/cmake-mode.el" t)
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
  
 ; Switching between windows 
 (when (fboundp 'windmove-default-keybindings)
