@@ -5,6 +5,7 @@
 
 ; coding / text editing
 (setq-default tab-width 2)
+(setq column-number-mode t)
 
 ;(setq basic-offset 2)
 (setq-default indent-tabs-mode nil)
@@ -135,3 +136,7 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Custom key binding to jump to start and end of functions
+(global-set-key (kbd "M-s a") 'beginning-of-defun)    ; press ALT + S, then A - go to begin of function
+(global-set-key (kbd "M-s e") 'end-of-defun)          ; press ALT + S, then E - go to end of function
