@@ -5,6 +5,7 @@
 
 ; coding / text editing
 (setq-default tab-width 2)
+(setq column-number-mode t)
 
 ;(setq basic-offset 2)
 (setq-default indent-tabs-mode nil)
@@ -75,33 +76,33 @@
 ;(ac-config-default)
 
 
-; objective c mode
-(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
+; web
+(autoload 'web-mode "~/.emacs.d/web-mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+>>>>>>> origin/master
 
-; nxhtml 
-;(load "~/.emacs.d/nxhtml/autostart.el")
-;(setq mumamo-background-colors nil) ;no wierd chunked coloring
-
-; (require 'php-mode)
+; css
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.less\\'" . css-mode))
 
 ; cmake mode
-(setq auto-mode-alist
-      (append
-       '(("CMakeLists\\.txt\\'" . cmake-mode))
-       '(("\\.cmake\\'" . cmake-mode))
-       auto-mode-alist))
-
 (autoload 'cmake-mode "~/.emacs.d/cmake-mode.el" t)
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
  
 ; Switching between windows 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-
 (autoload 'glsl-mode "glsl-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 (custom-set-variables
+
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -118,32 +119,32 @@
  )
 (put 'set-goal-column 'disabled nil)
 
-
 ;; quickly jump to a column
-(global-set-key (kbd "C-x j") (lambda () (interactive)
-                                   (move-to-column 115 t)))
+(global-set-key (kbd "C-x j") (lambda () (interactive) (move-to-column 115 t)))
 
 ;; move characters to column
-(global-set-key (kbd "C-x m")(lambda()  (interactive) (while (<
-               (current-column) 115) (insert " "))))
-
-
-;; vertical ido
-;;(require 'ido-vertical-mode)
-;;(ido-mode 1)
-;;(ido-vertical-mode 1)
-;;(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+(global-set-key (kbd "C-x m")(lambda()  (interactive) (while (< (current-column) 115) (insert " "))))
 
 ;; Melpa packages
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 ;; Magit git (install with "M-x package-install [RET] magit [RET]
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;; IRC
+(setq erc-nick "roxlu")
+
+;; Markdown mode
+(autoload 'markdown-mode "~/.emacs.d/markdown-mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; Custom key binding to jump to start and end of functions
+(global-set-key (kbd "M-s a") 'beginning-of-defun)    ; press ALT + S, then A - go to begin of function
+(global-set-key (kbd "M-s e") 'end-of-defun)          ; press ALT + S, then E - go to end of function
+
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
-;; IRC
-(setq erc-nick "roxlu")
