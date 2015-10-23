@@ -141,3 +141,9 @@
 
 ;; Magit git (install with "M-x package-install [RET] magit [RET]
 (global-set-key (kbd "C-x g") 'magit-status)
+
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+;; IRC
+(setq erc-nick "roxlu")
