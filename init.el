@@ -75,15 +75,12 @@
 ;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 ;(ac-config-default)
 
-<<<<<<< HEAD
 ; c++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ; php
 (autoload 'php-mode "~/.emacs.d/php-mode.el" t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-=======
->>>>>>> origin/master
 
 ; web
 (autoload 'web-mode "~/.emacs.d/web-mode.el" t)
@@ -160,6 +157,8 @@
 ;; Indent one line comment in header files to column num. 100. */
 (fset 'indent-comment
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("/xindent-doto-column100" 0 "%d")) arg)))
+
+(global-set-key (kbd "C-x C-k 1") 'indent-comment)     ; press CTRL + X, then CTRL-K, then 1 to execute the indent-comment func.
 
 ;; Make fullscreen on start (windows).
 (custom-set-variables
