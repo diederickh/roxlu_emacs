@@ -69,15 +69,21 @@
 ; org
 (require 'org-install)
 
-; objective c mode
-(add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
+; auto complete
+;(add-to-list 'load-path "~/.emacs.d/auto-complete/")
+;(require 'auto-complete-config)
+;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;(ac-config-default)
 
+<<<<<<< HEAD
 ; c++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ; php
 (autoload 'php-mode "~/.emacs.d/php-mode.el" t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+=======
+>>>>>>> origin/master
 
 ; web
 (autoload 'web-mode "~/.emacs.d/web-mode.el" t)
@@ -138,6 +144,9 @@
 ;; Magit git (install with "M-x package-install [RET] magit [RET]
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;; IRC
+(setq erc-nick "roxlu")
+
 ;; Markdown mode
 (autoload 'markdown-mode "~/.emacs.d/markdown-mode.el" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
@@ -151,3 +160,8 @@
 ;; Indent one line comment in header files to column num. 100. */
 (fset 'indent-comment
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("/xindent-doto-column100" 0 "%d")) arg)))
+
+;; Make fullscreen on start (windows).
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
