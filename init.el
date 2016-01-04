@@ -72,6 +72,9 @@
 ; objective c mode
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 
+; c++
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ; php
 (autoload 'php-mode "~/.emacs.d/php-mode.el" t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -84,9 +87,13 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 
+; haxe
+(add-to-list 'auto-mode-alist '("\\.hx\\'" . javascript-mode))
+
 ; css
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.less\\'" . css-mode))
+(setq css-indent-offset 2)
 
 ; cmake mode
 (autoload 'cmake-mode "~/.emacs.d/cmake-mode.el" t)
@@ -140,3 +147,7 @@
 ;; Custom key binding to jump to start and end of functions
 (global-set-key (kbd "M-s a") 'beginning-of-defun)    ; press ALT + S, then A - go to begin of function
 (global-set-key (kbd "M-s e") 'end-of-defun)          ; press ALT + S, then E - go to end of function
+
+;; Indent one line comment in header files to column num. 100. */
+(fset 'indent-comment
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("/xindent-doto-column100" 0 "%d")) arg)))
