@@ -158,7 +158,7 @@
 (fset 'indent-comment
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("/xindent-doto-column100" 0 "%d")) arg)))
 
-(global-set-key (kbd "C-x C-k 1") 'indent-comment)     ; press CTRL + X, then CTRL-K, then 1 to execute the indent-comment func.
+(global-set-key (kbd "C-x c") 'indent-comment)     ; press CTRL + X, then C to execute the indent-comment func.
 
 ;; Make fullscreen on start (windows).
 (custom-set-variables
