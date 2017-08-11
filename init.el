@@ -14,6 +14,8 @@
 ;              indent-tabs-mode 0)
 
 (setq js-indent-level 2)
+(setq js-switch-indent-offset 2)
+
 (setq indent-tabs-mode nil)
 (setq-default truncate-lines t) ; no line wrapping
 
@@ -55,9 +57,10 @@
 
 ; interactively do things
 (require 'ido)
+(ido-mode 1)
+(setq ido-use-virtual-buffers t)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
-(ido-mode 1)
 (setq ido-enable-last-directory-history t)
 (setq ido-max-work-directory-list 100)
 (setq ido-max-work-file-list 300)
