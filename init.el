@@ -58,12 +58,12 @@
 ; interactively do things
 (require 'ido)
 (ido-mode 1)
-(setq ido-use-virtual-buffers t)
+; (setq ido-use-virtual-buffers t) ; I didn't really like this in the end.
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-enable-last-directory-history t)
-(setq ido-max-work-directory-list 100)
-(setq ido-max-work-file-list 300)
+(setq ido-max-work-directory-list 1000)
+(setq ido-max-work-file-list 3000)
 
 ; idomenu, jump through functions
 (autoload 'idomenu "idomenu" nil t)
