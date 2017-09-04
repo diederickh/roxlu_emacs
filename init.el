@@ -4,6 +4,13 @@
 ; cmake-mode: http://www.cmake.org/CMakeDocs/cmake-mode.el
 
 ; coding / text editing
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq-default tab-width 2)
 (setq column-number-mode t)
 
@@ -73,10 +80,29 @@
 (require 'org-install)
 
 ; auto complete
-;(add-to-list 'load-path "~/.emacs.d/auto-complete/")
-;(require 'auto-complete-config)
-;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-;(ac-config-default)
+; (add-to-list 'load-path "~/.emacs.d/auto-complete/")
+; (require 'auto-complete-config)
+; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+                                        ; (ac-config-default)
+                                        ; (require 'auto-complete-auctex)
+(require `auto-complete)
+(ac-config-default)
+(setq ac-use-quick-help t)
+(setq ac-delay 0.1)
+(setq ac-auto-show-menu t)
+
+;(req-package auto-complete
+;             :require (auto-complete-config)
+;             :config
+;             (add-to-list `ac-dictionary-directories "~/.emacs.d/ac-dict")
+;             (ac-config-default)
+;             (setq ac-use-quick-help t)
+;             (setq ac-delay 0.1)
+;             (setq ac-auto-show-menu t))
+
+
+(require 'auto-complete-c-headers)
+(add-to-list 'ac-sources 'ac-source-c-headers)
 
 ; c++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -114,11 +140,12 @@
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 (custom-set-variables
-
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(package-selected-packages (quote (auto-complete-c-headers auto-complete)))
  '(safe-local-variable-values (quote ((intent-tabs-mode))))
  '(send-mail-function nil)
  '(show-paren-mode t)
@@ -164,6 +191,7 @@
 (global-set-key (kbd "C-x c") 'indent-comment)     ; press CTRL + X, then C to execute the indent-comment func.
 
 ;; Make fullscreen on start (windows).
-(custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
+
+(prefer-coding-system 'utf-8)
+(setq-default buffer-file-coding-system 'utf-8-auto-unix)
