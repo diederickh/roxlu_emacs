@@ -198,3 +198,11 @@
 
 (prefer-coding-system 'utf-8)
 (setq-default buffer-file-coding-system 'utf-8-auto-unix)
+
+;; Auto headers
+;;(autoload 'auto-make-header "header2")
+;;(add-hook 'c-mode-common-hook 'auto-make-header)
+;;(add-hook 'c++-mode-common-hook 'auto-make-header)
+
+(require 'yasnippet)
+(yas-global-mode 1)
