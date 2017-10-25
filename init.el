@@ -88,11 +88,11 @@
 ; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
                                         ; (ac-config-default)
                                         ; (require 'auto-complete-auctex)
-(require `auto-complete)
-(ac-config-default)
-(setq ac-use-quick-help t)
-(setq ac-delay 0.1)
-(setq ac-auto-show-menu t)
+;(require `auto-complete)
+;(ac-config-default)
+;(setq ac-use-quick-help t)
+;(setq ac-delay 0.1)
+;(setq ac-auto-show-menu t)
 
 ;(req-package auto-complete
 ;             :require (auto-complete-config)
@@ -104,8 +104,8 @@
 ;             (setq ac-auto-show-menu t))
 
 
-(require 'auto-complete-c-headers)
-(add-to-list 'ac-sources 'ac-source-c-headers)
+;(require 'auto-complete-c-headers)
+;(add-to-list 'ac-sources 'ac-source-c-headers)
 
 ; c++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
