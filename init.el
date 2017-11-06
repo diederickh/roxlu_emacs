@@ -29,7 +29,14 @@
 (setq indent-tabs-mode nil)
 (setq-default truncate-lines t) ; no line wrapping
 
-; make sure that function arguments are nicely indented
+; js2 mode.
+(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+(setq js2-mode-show-parse-errors nil)
+(setq js2-mode-show-strict-warnings nil)
+(setq js2-indent-switch-body 2)
+(add-to-list 'auto-mode-alist (cons (rx ".js" eos) 'js2-mode))
+
+                                        ; make sure that function arguments are nicely indented
 ; press C-c C-o, to see what syntax you can change
 ; (c-set-offset 'arglist-cont-nonempty '+)
 (add-hook 'c-mode-hook
@@ -158,7 +165,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(bold ((t (:foreground "brightred" :weight bold))))
+ '(font-lock-comment-face ((t (:foreground "brightgreen"))))
+ '(org-block ((t (:inherit shadow :foreground "brightgreen"))))
+ '(org-block-begin-line ((t (:inherit org-meta-line))) t)
+ '(org-code ((t (:inherit shadow :foreground "brightgreen")))))
 (put 'set-goal-column 'disabled nil)
 
 ;; quickly jump to a column
@@ -206,3 +217,8 @@
 
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(setq org-src-fontify-natively t)
+
+; Make sure that fill-paragraph fills out nicely.
+(setq-default fill-column 80)
