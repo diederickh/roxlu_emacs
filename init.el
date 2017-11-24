@@ -189,10 +189,10 @@
 (setq erc-nick "roxlu")
 
 ;; Markdown mode
-(autoload 'markdown-mode "~/.emacs.d/markdown-mode.el" t)
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+;(autoload 'markdown-mode "~/.emacs.d/markdown-mode.el" t)
+;(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+;(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+;(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; Custom key binding to jump to start and end of functions
 (global-set-key (kbd "M-s a") 'beginning-of-defun)    ; press ALT + S, then A - go to begin of function
@@ -222,3 +222,6 @@
 
 ; Make sure that fill-paragraph fills out nicely.
 (setq-default fill-column 80)
+
+; Wanderlust Mail
+(autoload 'wl "wl" "Wanderlust" t)
