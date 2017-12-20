@@ -8,20 +8,33 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
 
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; =================== Install packages ===========================
+
+;; See http://cachestocaches.com/2015/8/getting-started-use-package/
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(use-package yasnippet
+  :ensure t
+  :init (add-hook 'prog-mode-hook #'yas-minor-mode)
+  :config (yas-reload-all))
+
+;; =================== Edit ===========================
+
 (setq-default tab-width 2)
 (setq column-number-mode t)
-
-;(setq basic-offset 2)
 (setq-default indent-tabs-mode nil)
-;(setq-default c-basic-offset 2
-;              tab-width 2
-;              indent-tabs-mode 0)
 
 (setq js-indent-level 2)
 (setq js-switch-indent-offset 2)
@@ -36,9 +49,8 @@
 (setq js2-indent-switch-body 2)
 (add-to-list 'auto-mode-alist (cons (rx ".js" eos) 'js2-mode))
 
-                                        ; make sure that function arguments are nicely indented
+; make sure that function arguments are nicely indented
 ; press C-c C-o, to see what syntax you can change
-; (c-set-offset 'arglist-cont-nonempty '+)
 (add-hook 'c-mode-hook
           (lambda ()
             (c-set-offset 'defun-block-intro 2)
@@ -46,9 +58,6 @@
             (c-set-offset 'arglist-intro '+)
             (c-set-offset 'arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
             (c-set-offset 'arglist-close 0)))
-
-; (setq-default arglist-cont-nonempty 'c-lineup-arglist-intro-after-paren)
-
 
 ; indent cases labels
 (setq c-offsets-alist '((case-label . 2)))
@@ -88,31 +97,6 @@
 
 ; org
 (require 'org-install)
-
-; auto complete
-; (add-to-list 'load-path "~/.emacs.d/auto-complete/")
-; (require 'auto-complete-config)
-; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-                                        ; (ac-config-default)
-                                        ; (require 'auto-complete-auctex)
-;(require `auto-complete)
-;(ac-config-default)
-;(setq ac-use-quick-help t)
-;(setq ac-delay 0.1)
-;(setq ac-auto-show-menu t)
-
-;(req-package auto-complete
-;             :require (auto-complete-config)
-;             :config
-;             (add-to-list `ac-dictionary-directories "~/.emacs.d/ac-dict")
-;             (ac-config-default)
-;             (setq ac-use-quick-help t)
-;             (setq ac-delay 0.1)
-;             (setq ac-auto-show-menu t))
-
-
-;(require 'auto-complete-c-headers)
-;(add-to-list 'ac-sources 'ac-source-c-headers)
 
 ; c++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -188,12 +172,6 @@
 ;; IRC
 (setq erc-nick "roxlu")
 
-;; Markdown mode
-;(autoload 'markdown-mode "~/.emacs.d/markdown-mode.el" t)
-;(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-;(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-;(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
 ;; Custom key binding to jump to start and end of functions
 (global-set-key (kbd "M-s a") 'beginning-of-defun)    ; press ALT + S, then A - go to begin of function
 (global-set-key (kbd "M-s e") 'end-of-defun)          ; press ALT + S, then E - go to end of function
@@ -210,10 +188,7 @@
 (prefer-coding-system 'utf-8)
 (setq-default buffer-file-coding-system 'utf-8-auto-unix)
 
-;; Auto headers
-;;(autoload 'auto-make-header "header2")
-;;(add-hook 'c-mode-common-hook 'auto-make-header)
-;;(add-hook 'c++-mode-common-hook 'auto-make-header)
+;; yasnippet
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -224,4 +199,9 @@
 (setq-default fill-column 80)
 
 ; Wanderlust Mail
-(autoload 'wl "wl" "Wanderlust" t)
+; (autoload 'wl "wl" "Wanderlust" t)
+
+; Cursor
+(setq-default cursor-type `box)
+(set-cursor-color "#00FF00")
+
